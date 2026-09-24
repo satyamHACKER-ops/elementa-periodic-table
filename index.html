@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0b1020"
+    >
+
+    <meta
+        name="description"
+        content="Elementa — an interactive periodic table of all 118 chemical elements."
+    >
+
+    <title>Elementa — Interactive Periodic Table</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- ================================
+             HEADER
+        ================================= -->
+
+        <header class="site-header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    E
+                </div>
+
+                <div class="brand-text">
+
+                    <h1>
+                        Elementa
+                    </h1>
+
+                    <p>
+                        Interactive Periodic Table
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button
+                id="themeToggle"
+                class="icon-button"
+                type="button"
+                aria-label="Toggle theme"
+                title="Toggle theme"
+            >
+                ☀️
+            </button>
+
+        </header>
+
+
+        <!-- ================================
+             HERO
+        ================================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    THE ELEMENTAL EXPLORER
+                </span>
+
+                <h2>
+                    Explore the
+                    <span>Periodic Table</span>
+                </h2>
+
+                <p>
+                    Discover all 118 chemical elements,
+                    their properties, classifications,
+                    electron configurations and more.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             SEARCH & CONTROLS
+        ================================= -->
+
+        <section class="controls-section">
+
+            <div class="search-wrapper">
+
+                <span
+                    class="search-icon"
+                    aria-hidden="true"
+                >
+                    ⌕
+                </span>
+
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Search by element name, symbol or atomic number..."
+                    autocomplete="off"
+                    aria-label="Search elements"
+                >
+
+                <button
+                    id="clearSearch"
+                    class="clear-button"
+                    type="button"
+                    aria-label="Clear search"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <div class="filter-group">
+
+                    <button
+                        class="filter-button active"
+                        data-filter="all"
+                        type="button"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="alkali-metal"
+                        type="button"
+                    >
+                        Alkali Metals
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="alkaline-earth-metal"
+                        type="button"
+                    >
+                        Alkaline Earth
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="transition-metal"
+                        type="button"
+                    >
+                        Transition Metals
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="post-transition-metal"
+                        type="button"
+                    >
+                        Post-Transition
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="metalloid"
+                        type="button"
+                    >
+                        Metalloids
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="nonmetal"
+                        type="button"
+                    >
+                        Nonmetals
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="halogen"
+                        type="button"
+                    >
+                        Halogens
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="noble-gas"
+                        type="button"
+                    >
+                        Noble Gases
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="lanthanide"
+                        type="button"
+                    >
+                        Lanthanides
+                    </button>
+
+                    <button
+                        class="filter-button"
+                        data-filter="actinide"
+                        type="button"
+                    >
+                        Actinides
+                    </button>
+
+                </div>
+
+
+                <button
+                    id="randomElement"
+                    class="random-button"
+                    type="button"
+                >
+                    🎲 Random Element
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             PERIODIC TABLE
+        ================================= -->
+
+        <main>
+
+            <section class="table-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            ELEMENTS
+                        </span>
+
+                        <h2>
+                            Periodic Table
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="elementCount"
+                        class="element-count"
+                    >
+                        118 elements
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="periodicTable"
+                    class="periodic-table"
+                    aria-label="Periodic table of elements"
+                >
+                    <!-- Elements generated by JavaScript -->
+                </div>
+
+
+                <!-- ============================
+                     LANTHANIDES
+                ============================= -->
+
+                <div class="series-section">
+
+                    <div class="series-label">
+
+                        <span>
+                            Lanthanides
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="lanthanides"
+                        class="series-grid"
+                    >
+                        <!-- Generated by JavaScript -->
+                    </div>
+
+                </div>
+
+
+                <!-- ============================
+                     ACTINIDES
+                ============================= -->
+
+                <div class="series-section">
+
+                    <div class="series-label">
+
+                        <span>
+                            Actinides
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="actinides"
+                        class="series-grid"
+                    >
+                        <!-- Generated by JavaScript -->
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ================================
+             ELEMENT DETAILS
+        ================================= -->
+
+        <div
+            id="detailsOverlay"
+            class="details-overlay hidden"
+        >
+
+            <div
+                id="detailsPanel"
+                class="details-panel"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="detailName"
+            >
+
+                <button
+                    id="closeDetails"
+                    class="close-button"
+                    type="button"
+                    aria-label="Close element details"
+                >
+                    ×
+                </button>
+
+
+                <div
+                    id="detailCategory"
+                    class="detail-category"
+                >
+                    ELEMENT
+                </div>
+
+
+                <div class="detail-symbol">
+
+                    <span id="detailSymbol">
+                        H
+                    </span>
+
+                </div>
+
+
+                <div class="detail-title">
+
+                    <div>
+
+                        <span id="detailAtomicNumber">
+                            Atomic number 1
+                        </span>
+
+                        <h2 id="detailName">
+                            Hydrogen
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <p
+                    id="detailDescription"
+                    class="detail-description"
+                >
+                    Element information will appear here.
+                </p>
+
+
+                <div class="detail-grid">
+
+                    <div class="detail-card">
+
+                        <span>
+                            Atomic Mass
+                        </span>
+
+                        <strong id="detailMass">
+                            1.008
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span>
+                            State
+                        </span>
+
+                        <strong id="detailState">
+                            Gas
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span>
+                            Electron Configuration
+                        </span>
+
+                        <strong id="detailElectronConfig">
+                            1s¹
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span>
+                            Discovery
+                        </span>
+
+                        <strong id="detailDiscovery">
+                            1766
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span>
+                            Period
+                        </span>
+
+                        <strong id="detailPeriod">
+                            1
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <span>
+                            Group
+                        </span>
+
+                        <strong id="detailGroup">
+                            1
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             FOOTER
+        ================================= -->
+
+        <footer class="site-footer">
+
+            <p>
+                Elementa
+                <span>•</span>
+                Interactive Periodic Table
+            </p>
+
+            <p class="footer-small">
+                Built with HTML, CSS and JavaScript.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script src="data/elements.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/details.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+  </html>
