@@ -718,16 +718,15 @@ window.ELEMENTS = [
         symbol: "Te",
         name: "Tellurium",
         mass: "127.60",
-        category: "category: "metalloid",
-state: "Solid",
-electronConfig: "[Kr] 4d¹⁰ 5s² 5p⁴",
-discovery: "1782",
-period: 5,
-group: 16,
-block: "p",
-description: "A brittle metalloid with applications in alloys, semiconductors and thermoelectric materials."
+        "category: "metalloid",
+        state: "Solid",
+        electronConfig: "[Kr] 4d¹⁰ 5s² 5p⁴",
+        discovery: "1782",
+        period: 5,
+        group: 16,
+        block: "p",
+        description: "A brittle metalloid with applications in alloys, semiconductors and thermoelectric materials."
 },
-
 {
     atomicNumber: 53,
     symbol: "I",
@@ -742,7 +741,6 @@ description: "A brittle metalloid with applications in alloys, semiconductors an
     block: "p",
     description: "A dark, lustrous halogen essential in small amounts for human thyroid function."
 },
-
 {
     atomicNumber: 54,
     symbol: "Xe",
@@ -1586,16 +1584,16 @@ description: "A brittle metalloid with applications in alloys, semiconductors an
 {
     atomicNumber: 110,
     symbol: "Ds",
-    name: "Darmstaname: "Darmstadtium",
-mass: "281",
-category: "transition-metal",
-state: "Solid",
-electronConfig: "[Rn] 5f¹⁴ 6d⁸ 7s²",
-discovery: "1994",
-period: 7,
-group: 10,
-block: "d",
-description: "A synthetic radioactive element named after the German city of Darmstadt."
+    name: "Darmstadtium",
+    mass: "281",
+    category: "transition-metal",
+    state: "Solid",
+    electronConfig: "[Rn] 5f¹⁴ 6d⁸ 7s²",
+    discovery: "1994",
+    period: 7,
+    group: 10,
+    block: "d",
+    description: "A synthetic radioactive element named after the German city of Darmstadt."
 },
 
 {
