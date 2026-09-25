@@ -718,7 +718,7 @@ window.ELEMENTS = [
         symbol: "Te",
         name: "Tellurium",
         mass: "127.60",
-        "category: "metalloid",
+        category: "metalloid",
         state: "Solid",
         electronConfig: "[Kr] 4d¹⁰ 5s² 5p⁴",
         discovery: "1782",
