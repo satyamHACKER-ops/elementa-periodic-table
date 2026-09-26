@@ -399,3 +399,108 @@
     };
 
 })();
+/* =========================================================
+   ELEMENTA QUIZ — USER INTERFACE
+   ========================================================= */
+
+(function () {
+    "use strict";
+
+    function startQuizUI() {
+        var quizButton = document.getElementById("quizButton");
+        var quizOverlay = document.getElementById("quizOverlay");
+        var closeQuiz = document.getElementById("closeQuiz");
+        var questionBox = document.getElementById("quizQuestion");
+        var optionsBox = document.getElementById("quizOptions");
+        var feedbackBox = document.getElementById("quizFeedback");
+        var scoreBox = document.getElementById("quizScore");
+        var nextButton = document.getElementById("nextQuizQuestion");
+
+        if (!quizButton || !quizOverlay || !window.ElementaQuiz) {
+            return;
+        }
+
+        var score = 0;
+        var answered = false;
+
+        function showQuestion() {
+            var question = window.ElementaQuiz.generateQuestion();
+
+            if (!question) {
+                questionBox.textContent = "Unable to generate a question.";
+                return;
+            }
+
+            answered = false;
+            feedbackBox.textContent = "";
+            optionsBox.innerHTML = "";
+
+            questionBox.textContent = question.question;
+
+            question.options.forEach(function (option) {
+                var button = document.createElement("button");
+
+                button.type = "button";
+                button.className = "quiz-option";
+                button.textContent = option;
+
+                button.addEventListener("click", function () {
+                    if (answered) return;
+
+                    answered = true;
+
+                    var buttons = optionsBox.querySelectorAll(".quiz-option");
+
+                    buttons.forEach(function (item) {
+                        item.disabled = true;
+
+                        if (item.textContent === question.answer) {
+                            item.classList.add("correct");
+                        }
+                    });
+
+                    if (option === question.answer) {
+                        score++;
+                        scoreBox.textContent = score;
+                        feedbackBox.textContent = "✅ Correct!";
+                    } else {
+                        button.classList.add("wrong");
+                        feedbackBox.textContent =
+                            "❌ Correct answer: " + question.answer;
+                    }
+                });
+
+                optionsBox.appendChild(button);
+            });
+        }
+
+        quizButton.addEventListener("click", function () {
+            quizOverlay.classList.remove("hidden");
+            document.body.classList.add("details-open");
+            showQuestion();
+        });
+
+        closeQuiz.addEventListener("click", function () {
+            quizOverlay.classList.add("hidden");
+            document.body.classList.remove("details-open");
+        });
+
+        nextButton.addEventListener("click", function () {
+            showQuestion();
+        });
+
+        quizOverlay.addEventListener("click", function (event) {
+            if (event.target === quizOverlay) {
+                quizOverlay.classList.add("hidden");
+                document.body.classList.remove("details-open");
+            }
+        });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", startQuizUI);
+    } else {
+        startQuizUI();
+    }
+
+})();
