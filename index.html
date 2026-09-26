@@ -120,7 +120,32 @@
   </div>
 </section>
 </main>
+<div id="quizOverlay" class="details-overlay hidden">
+  <div id="quizPanel" class="details-panel" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
 
+    <button id="closeQuiz" class="close-button" type="button"
+            aria-label="Close quiz">×</button>
+
+    <div class="detail-category">ELEMENTA QUIZ</div>
+
+    <h2 id="quizTitle">🎯 Quiz Mode</h2>
+
+    <p id="quizQuestion">Question will appear here.</p>
+
+    <div id="quizOptions"></div>
+
+    <div id="quizFeedback"></div>
+
+    <div class="quiz-score">
+      Score: <strong id="quizScore">0</strong>
+    </div>
+
+    <button id="nextQuizQuestion" class="random-button" type="button">
+      Next Question →
+    </button>
+
+  </div>
+</div>
 <div id="detailsOverlay" class="details-overlay hidden">
   <div id="detailsPanel" class="details-panel" role="dialog" aria-modal="true" aria-labelledby="detailName">
     <button id="closeDetails" class="close-button" type="button"
