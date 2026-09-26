@@ -1,10 +1,12 @@
-const CACHE_NAME = "elementa-v3";
+
+const CACHE_NAME = "elementa-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./css/style.css",
   "./data/elements.js",
   "./js/app.js",
+  "./js/quiz.js",
   "./manifest.json"
 ];
 
