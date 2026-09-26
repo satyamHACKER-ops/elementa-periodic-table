@@ -3,6 +3,7 @@
   "short_name": "Elementa",
   "description": "Explore all 118 chemical elements with an interactive periodic table.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0b1020",
   "theme_color": "#0b1020",
