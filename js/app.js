@@ -114,7 +114,6 @@
                 state.query = "";
 
                 clear.classList.remove("visible");
-
                 input.focus();
 
                 render();
@@ -136,7 +135,6 @@
             button.addEventListener(
                 "click",
                 function () {
-
                     buttons.forEach(function (item) {
                         item.classList.remove("active");
                     });
@@ -265,8 +263,7 @@
 
         container.innerHTML = "";
 
-        var visible =
-            {};
+        var visible = {};
 
         matching.forEach(function (element) {
             visible[element.atomicNumber] = true;
@@ -424,6 +421,7 @@
             "element-card placeholder-card";
 
         placeholder.style.gridColumn = "3";
+
         placeholder.style.gridRow =
             String(period);
 
@@ -467,15 +465,13 @@
 
         container.innerHTML = "";
 
-        var visible =
-            {};
+        var visible = {};
 
         matching.forEach(function (element) {
             visible[element.atomicNumber] = true;
         });
 
         elements.forEach(function (element) {
-
             if (element.category !== category) {
                 return;
             }
@@ -519,7 +515,6 @@
             overlay.addEventListener(
                 "click",
                 function (event) {
-
                     if (
                         event.target === overlay
                     ) {
@@ -532,7 +527,6 @@
         document.addEventListener(
             "keydown",
             function (event) {
-
                 if (event.key === "Escape") {
                     closeDetails();
                 }
@@ -661,36 +655,35 @@
     }
 
     /* =========================
-       OLD SERVICE WORKER CLEANUP
+       SERVICE WORKER
     ========================= */
 
-    function removeOldServiceWorkers() {
-        if (
-            !("serviceWorker" in navigator)
-        ) {
+    function registerServiceWorker() {
+        if (!("serviceWorker" in navigator)) {
             return;
         }
 
-        navigator.serviceWorker
-            .getRegistrations()
-            .then(function (registrations) {
-
-                registrations.forEach(
-                    function (registration) {
-                        registration.unregister();
-                    }
-                );
-            })
-            .catch(function () {
-                /* Ignore cleanup errors. */
-            });
+        window.addEventListener("load", function () {
+            navigator.serviceWorker
+                .register("./service-worker.js")
+                .then(function (registration) {
+                    console.log(
+                        "Elementa: Service Worker registered.",
+                        registration.scope
+                    );
+                })
+                .catch(function (error) {
+                    console.error(
+                        "Elementa: Service Worker registration failed.",
+                        error
+                    );
+                });
+        });
     }
 
     /* =========================
        START
     ========================= */
-
-    removeOldServiceWorkers();
 
     if (
         document.readyState ===
@@ -703,5 +696,7 @@
     } else {
         init();
     }
+
+    registerServiceWorker();
 
 })();
